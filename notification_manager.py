@@ -8,7 +8,7 @@ class NotificationManager:
         message = client.messages.create(
                 body=f"Only £{price} to fly from London-STN to {destination}-{destination_airport} from {leave_date} to {return_date}",
                 from_='+18304606191',
-                to=my_phone
+                to=MY_PHONE
         )
 
     def email(self, price, destination, destination_airport, leave_date, return_date, link):
@@ -17,6 +17,6 @@ class NotificationManager:
         for item in data["users"]:
             with smtplib.SMTP("smtp.gmail.com") as connection:
                 connection.starttls()
-                connection.login(user=my_email, password=password)
-                connection.sendmail(from_addr=my_email, to_addrs=my_email, msg=(f"Subject:New Low Price Flight!\n\nOnly £{price} to fly from London-STN to {destination}-{destination_airport} from {leave_date} to {return_date}\n{link}").encode('utf-8'))
+                connection.login(user=MY_EMAIL, password=PASSWORD)
+                connection.sendmail(from_addr=MY_EMAIL, to_addrs=MY_EMAIL, msg=(f"Subject:New Low Price Flight!\n\nOnly £{price} to fly from London-STN to {destination}-{destination_airport} from {leave_date} to {return_date}\n{link}").encode('utf-8'))
 
